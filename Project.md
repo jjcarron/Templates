@@ -11,6 +11,8 @@ const dueDate = tp.date.now("YYYY-MM-DD", "+7d");
 
 // Définir le répertoire du projet et les chemins de fichier
 const projectDir = `Projects/${fileTitle}`;
+const assetsDir = `Projects/${fileTitle}/Assets`;
+const filesDir = `Projects/${fileTitle}/Files`;
 const projectFile = `${projectDir}/projet_${fileTitle}.md`;
 const kanbanFile = `${projectDir}/Kanban_${fileTitle}.md`;
 
@@ -18,10 +20,11 @@ const kanbanFile = `${projectDir}/Kanban_${fileTitle}.md`;
 const folderExists = await app.vault.adapter.exists(projectDir);
 if (!folderExists) {
     await app.vault.createFolder(projectDir);
+    await app.vault.createFolder(assetsDir);
+    await app.vault.createFolder(filesDir);
 }
 
 // Renommer ou supprimer le fichier actuel (Untitled)
-console.log(`${projectDir}/project_${fileTitle}`)
 setTimeout(async () => {
     await tp.file.move(`${projectDir}/project_${fileTitle}`);
 }, 0);

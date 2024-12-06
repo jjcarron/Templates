@@ -1,4 +1,4 @@
-<%\*
+<%*
 const fileTitle = await tp.system.prompt("Nom de l'élément (titre du fichier) ?");
 if (!fileTitle) {
 new Notice("Le titre du fichier est obligatoire !");
@@ -8,7 +8,7 @@ const type = await tp.system.prompt("Type d'élément (PC, Router, Switch, Raspb
 const location = await tp.system.prompt("Lieu d'installation (e.g., Bureau, Salon, Data Center)") || "Non spécifié";
 const setupDate = tp.date.now("YYYY-MM-DD");
 const status = await tp.system.prompt("État (Actif, En maintenance, Retiré)") || "Actif";
-
+await tp.file.move( `Infrastructure/Hardware/${fileTitle}`);
 %>---
 tags:
 
@@ -54,10 +54,3 @@ tags:
 -
 
 ---
-
-<%\*
-// Renommer le fichier avec le titre saisi
-// après un temps d'attente en raison des latence du réseau (125 ms semblent suffisantes)
-// attedre 250 ms donne une marge raisonable
-setTimeout(async () => {tp.file.rename(fileTitle); }, 250);
-%>

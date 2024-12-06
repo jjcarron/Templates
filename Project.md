@@ -10,7 +10,7 @@ const startDate = tp.date.now("YYYY-MM-DD");
 const dueDate = tp.date.now("YYYY-MM-DD", "+7d");
 
 // Définir le répertoire du projet et les chemins de fichier
-const projectDir = `Projets/${fileTitle}`;
+const projectDir = `Projects/${fileTitle}`;
 const projectFile = `${projectDir}/projet_${fileTitle}.md`;
 const kanbanFile = `${projectDir}/Kanban_${fileTitle}.md`;
 
@@ -20,50 +20,18 @@ if (!folderExists) {
     await app.vault.createFolder(projectDir);
 }
 
-// Contenu pour la fiche projet
-const projectContent = `
----
-tags:
-- 📁/projet
-status: En cours
-date_debut: ${startDate}
-date_fin_prevue: ${dueDate}
----
-
-# 🛠️ Projet ${fileTitle}
-
-## 🎯 Objectifs
-
-- [ ] Décrire les objectifs du projet.
-
-## 🗂️ Informations générales
-
-- **Responsable** : [Nom]
-- **Équipe** : [Équipe ou collaborateurs]
-- **Délai estimé** : [Durée]
-
----
-
-## 📋 Kanban des tâches
-
-👉 [Kanban de ${fileTitle}](Kanban_${fileTitle}.md)
-
----
-
-## 📓 Notes supplémentaires
-
-- Note ou détail 1
-- Note ou détail 2
-`;
-
-// Écrire la fiche projet
-await app.vault.create(projectFile, projectContent);
+// Renommer ou supprimer le fichier actuel (Untitled)
+console.log(`${projectDir}/project_${fileTitle}`)
+setTimeout(async () => {
+    await tp.file.move(`${projectDir}/project_${fileTitle}`);
+}, 0);
 
 // Contenu pour le fichier Kanban
-const kanbanContent = `
----
+const kanbanContent = `---
+
 kanban-plugin: basic
 tags: 📋/kanban
+
 ---
 
 # Kanban de ${fileTitle}
@@ -86,11 +54,38 @@ tags: 📋/kanban
 await app.vault.create(kanbanFile, kanbanContent);
 %>---
 
-# Projet ${fileTitle}
+tags:
+- 📁/projet
+status: En cours
+date_debut: <% startDate %>
+date_fin_prevue: <% dueDate %>
 
-- Fiche projet et Kanban créés dans le dossier : `${projectDir}`
+---
 
-<%*
-// Renommer le fichier actuel après un délai de 250 ms
-setTimeout(() => tp.file.rename(`projet_${fileTitle}`), 250);
-%>
+# 🛠️ Projet <% fileTitle %>
+
+## 🎯 Objectifs
+
+- [ ] Décrire les objectifs du projet.
+
+## 🗂️ Informations générales
+
+- **Responsable** : [Nom]
+- **Équipe** : [Équipe ou collaborateurs]
+- **Délai estimé** : [Durée]
+
+---
+
+## 📋 Kanban des tâches
+
+👉 [Kanban de <% fileTitle %>](Kanban_<% fileTitle %>.md)
+
+---
+
+## 📓 Notes supplémentaires
+
+- Note ou détail 1
+- Note ou détail 2
+
+
+

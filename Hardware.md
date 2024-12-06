@@ -9,29 +9,25 @@ const location = await tp.system.prompt("Lieu d'installation (e.g., Bureau, Salo
 const setupDate = tp.date.now("YYYY-MM-DD");
 const status = await tp.system.prompt("État (Actif, En maintenance, Retiré)") || "Actif";
 
-// Renommer le fichier avec le titre saisi
-tp.file.rename(fileTitle);
-
-// Générer le contenu pour la note
-const content = `---
+%>---
 tags:
 
 -   🖥️/infrastructure
-    type: ${type}
-    location: ${location}
-    setup_date: ${setupDate}
-    status: ${status}
+    type: <% type %>
+    location: <% location %>
+    setup_date: <% setupDate %>
+    status: <% status %>
 
 ---
 
-# 📋 Fiche Matériel : ${fileTitle}
+# 📋 Fiche Matériel : <% fileTitle %>
 
 ## 🛠️ Informations Générales
 
--   **Type** : ${type}
--   **Lieu** : ${location}
--   **Date de mise en service** : ${setupDate}
--   **État** : "${status}"
+-   **Type** : <% type %>
+-   **Lieu** : <% location %>
+-   **Date de mise en service** : <% setupDate %>
+-   **État** : <% status %>
 
 ---
 
@@ -47,9 +43,9 @@ tags:
 
 ## 🗓️ Historique et Maintenance
 
-| Date         | Action       | Description               |
-| ------------ | ------------ | ------------------------- |
-| ${setupDate} | Installation | Mise en service initiale. |
+| Date            | Action       | Description               |
+| --------------- | ------------ | ------------------------- |
+| <% setupDate %> | Installation | Mise en service initiale. |
 
 ---
 
@@ -59,12 +55,9 @@ tags:
 
 ---
 
-`;
-
-// Ajouter le contenu après un délai pour gérer la latence
-setTimeout(async () => {
-tp.file.cursor(0); // Positionner le curseur au début
-tp.file.cursor_append(content); // Ajouter le contenu
-}, 250); // Délai de 250 ms pour permettre la finalisation du fichier
-//(125 ms sont suffisant. augmenter si des problème de latences apparaissent)
+<%\*
+// Renommer le fichier avec le titre saisi
+// après un temps d'attente en raison des latence du réseau (125 ms semblent suffisantes)
+// attedre 250 ms donne une marge raisonable
+setTimeout(async () => {tp.file.rename(fileTitle); }, 250);
 %>

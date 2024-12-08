@@ -3,7 +3,7 @@ kanban-plugin: basic
 tags: 📋/kanban
 ---
 
-# Kanban de {{nom_du_projet}}
+# {{nom_du_projet}}
 
 ### ToDo
 - [ ] Nouvelle tâche 1

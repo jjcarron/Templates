@@ -1,20 +1,20 @@
 ---
 tags: 📅/weekly
-week: 49
-start_date: 2024-12-04
-end_date: 2024-12-10
+week: <% tp.date.now("WW", 0, tp.file.title, "gggg-[W]WW") %>
+start_date: <% tp.date.now("YYYY-MM-DD", -6, tp.file.title, "gggg-[W]WW") %>
+end_date: <% tp.date.now("YYYY-MM-DD", 0, tp.file.title, "gggg-[W]WW") %>
 ---
 
-# 🗓️ Semaine 49 - 2024
-**Du :** lundi, décembre 4  
-**Au :** dimanche, décembre 10
+# 🗓️ Semaine <% tp.date.now("WW", 0, tp.file.title, "gggg-[W]WW") %> - <% tp.date.now("YYYY", 0, tp.file.title, "gggg-[W]WW") %>
+**Du :** <% tp.date.now("dddd, DD MMMM YYYY", -6, tp.file.title, "gggg-[W]WW") %>  
+**Au :** <% tp.date.now("dddd, DD MMMM YYYY", 0, tp.file.title, "gggg-[W]WW") %>
 
 ---
 
 ## 🌟 Objectifs de la semaine
-- [ ] ...
-- [ ] ...
-- [ ] ...
+- [ ] Objectif 1
+- [ ] Objectif 2
+- [ ] Objectif 3
 
 ---
 
@@ -22,7 +22,7 @@ end_date: 2024-12-10
 
 | Jour       | Priorités principales         | Événements                   |
 |------------|-------------------------------|------------------------------|
-| Lundi      |                               |      |
+| Lundi      |                               |                              |
 | Mardi      |                               |                              |
 | Mercredi   |                               |                              |
 | Jeudi      |                               |                              |
@@ -33,7 +33,7 @@ end_date: 2024-12-10
 ---
 
 ## 📝 Notes importantes
-- Mise à jour de l'infrastructure en attente de validation.
+- 
 
 ---
 
@@ -46,5 +46,3 @@ end_date: 2024-12-10
 
 **Objectifs pour la semaine prochaine :**  
 - 
-
----

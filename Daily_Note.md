@@ -1,21 +1,21 @@
 ---
 tags: 📅/daily
-date: Projet
-day: Invalid date
-week: Invalid date
+date: <% tp.date.now("YYYY-MM-DD", 0, tp.file.title, "YYYY-MM-DD") %>
+day: <% tp.date.now("dddd", 0, tp.file.title, "YYYY-MM-DD") %>
+week: <% tp.date.now("WW", 0, tp.file.title, "YYYY-MM-DD") %>
 ---
 
-# 🗓️ Journal - Invalid date
+# 🗓️ Journal - <% tp.date.now("dddd, DD.MM.YYYY", 0, tp.file.title, "YYYY-MM-DD") %>
 
-## 🌟 Priorities
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
+## 🌟 Priorités
+- [ ] Tâche 1
+- [ ] Tâche 2
+- [ ] Tâche 3
 
 ---
 
-## 🕒 Schedule
-| Time    | Activity                     |
+## 🕒 Programme
+| Heure   | Activité                     |
 |---------|-------------------------------|
 | 08:00   |                               |
 | 12:00   |                               |
@@ -23,16 +23,16 @@ week: Invalid date
 
 ---
 
-## 📋 Tasks in Progress
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
+## 📋 Tâches en cours
+- [ ] Tâche 1
+- [ ] Tâche 2
+- [ ] Tâche 3
 
 ---
 
-## 📓 Notes & Ideas
-- Idea 1
-- Idea 2
+## 📓 Notes et idées
+- Idée 1
+- Idée 2
 
 ---
 

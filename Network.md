@@ -1,23 +1,37 @@
----
+<%*
+const fileTitle = await tp.system.prompt("Nom de l'élément réseau ?");
+if (!fileTitle) {
+    new Notice("Le titre de l'élément réseau est obligatoire !");
+    throw new Error("Titre manquant");
+}
+
+const deviceType = await tp.system.prompt("Type de dispositif réseau (e.g., Switch, Router, Firewall) ?") || "Non spécifié";
+const ipAddress = await tp.system.prompt("Adresse IP (e.g., 192.168.1.1) ?") || "Non spécifiée";
+const location = await tp.system.prompt("Lieu (e.g., Salle serveur, Datacenter) ?") || "Non spécifié";
+const setupDate = tp.date.now("YYYY-MM-DD");
+const status = await tp.system.prompt("État (e.g., Actif, En maintenance, Retiré) ?") || "Actif";
+
+await tp.file.move(`Infrastructure/Network/${fileTitle}`);
+%>---
 tags:
 - 🌐/network
-type: Switch
-ip_address: 192.168.1.10
-location: Salle serveur
-setup_date: 2024-12-05
-status: Actif
+type: <% deviceType %>
+ip_address: <% ipAddress %>
+location: <% location %>
+setup_date: <% setupDate %>
+status: <% status %>
 
 ---
 
-# 🌐 Équipement Réseau : Switch-SalleServeur
+# 🌐 Équipement Réseau : <% fileTitle %>
 
 ## 🛠️ Informations Générales
 
-- **Type** : Switch
-- **Adresse IP** : 192.168.1.10
-- **Lieu** : Salle serveur
-- **Date de mise en service** : 2024-12-05
-- **État** : Actif
+- **Type** : <% deviceType %>
+- **Adresse IP** : <% ipAddress %>
+- **Lieu** : <% location %>
+- **Date de mise en service** : <% setupDate %>
+- **État** : <% status %>
 
 ---
 
@@ -53,6 +67,6 @@ status: Actif
 
 | Date       | Action                     | Description                        |
 |------------|----------------------------|------------------------------------|
-| 2024-12-05 | Mise en service            | Équipement installé et configuré. |
+| <% setupDate %> | Mise en service            | Équipement installé et configuré. |
 
 ---

@@ -11,7 +11,7 @@ const location = await tp.system.prompt("Lieu (e.g., Salle serveur, Datacenter) 
 const setupDate = tp.date.now("YYYY-MM-DD");
 const status = await tp.system.prompt("État (e.g., Actif, En maintenance, Retiré) ?") || "Actif";
 
-await tp.file.move(`Infrastructure/Network/${fileTitle}`);
+await tp.file.move(`IT/Network/${fileTitle}`);
 %>---
 tags:
 - 🌐/network

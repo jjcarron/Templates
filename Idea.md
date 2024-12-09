@@ -1,14 +1,18 @@
 <%*
-const ideaTitle = await tp.system.prompt("Titre de l'idée ?");
-if (!ideaTitle) {
-    new Notice("Le titre est obligatoire !");
-    throw new Error("Titre manquant");
-}
+let ideaTitle;
+
+ideaTitle = await tp.system.prompt("Titre de l'idée ?");
+
+// Vérifier si le titre est valide
+if (!ideaTitle || ideaTitle.trim() === "") {
+    new Notice("Le titre est obligatoire et ne peut pas être vide !");
+} 
 
 const ideaContext = await tp.system.prompt("Contexte de l'idée ?") || "Non spécifié";
 const ideaType = await tp.system.prompt("Type (HW, SW, Projet mécanique, etc.) ?") || "Non spécifié";
 const initialTimeEstimate = await tp.system.prompt("Estimation initiale du temps nécessaire ? (e.g., 2 heures, 1 semaine)") || "Non estimé";
-
+const registrationDate = tp.date.now("YYYY-MM-DD");
+const status = "Open"; // (Open, In Progress, Done)
 await tp.file.move(`Ideas/${ideaTitle}`);
 %>---
 tags:
@@ -16,6 +20,8 @@ tags:
 context: <% ideaContext %>
 type: <% ideaType %>
 time_estimate: <% initialTimeEstimate %>
+registration_date: <% registrationDate %>
+status: <% status %>
 
 ---
 

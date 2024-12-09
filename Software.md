@@ -8,7 +8,7 @@ const licenseType = await tp.system.prompt("Type de licence ? (e.g., Open Source
 const licenseExpiry = await tp.system.prompt("Échéance de la licence ? (format: YYYY-MM-DD, ou 'illimité')") || "illimité";
 const setupDate = tp.date.now("YYYY-MM-DD");
 const status = await tp.system.prompt("État (Installé, En cours de test, Retiré)") || "Installé";
-await tp.file.move(`Infrastructure/Software/${fileTitle}`);
+await tp.file.move(`IT/Software/${fileTitle}`);
 %>---
 tags:
 - 🖥️/software
@@ -25,6 +25,7 @@ status: <% status %>
 
 - **Type de licence** : <% licenseType %>
 - **Échéance** : <% licenseExpiry %>
+- **Clé de produit** : 
 
 ---
 
@@ -47,9 +48,7 @@ status: <% status %>
 
 ## 🚀 Installation
 
-| Date            | Action               | Description                    |
-| --------------- | -------------------- | ------------------------------ |
-| <% setupDate %> | Installation initiale | Logiciel installé.             |
+*Instructions spéciales ou commentaires particuliers*
 
 ---
 

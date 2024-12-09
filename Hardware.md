@@ -12,7 +12,7 @@ await tp.file.move( `IT/Hardware/${fileTitle}`);
 %>---
 tags:
 
--   🖥️/infrastructure
+-   🖥️/hardware
     type: <% type %>
     location: <% location %>
     setup_date: <% setupDate %>

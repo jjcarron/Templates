@@ -16,7 +16,7 @@ const status = "Open"; // (Open, In Progress, Done)
 await tp.file.move(`Ideas/${ideaTitle}`);
 %>---
 tags:
-- 💡/ideas
+- 💡/idea
 context: <% ideaContext %>
 type: <% ideaType %>
 time_estimate: <% initialTimeEstimate %>
